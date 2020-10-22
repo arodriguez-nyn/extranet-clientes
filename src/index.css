@@ -1,0 +1,106 @@
+/*--------------------------------------------------------------------------*/
+/*--------------------------- ESTILOS GENÉRICOS ----------------------------*/
+/*--------------------------------------------------------------------------*/
+:root {
+    /* Colores */
+    --primary-green: #044437;
+    --gray-background: #f7f8f9;
+    --primary-yellow: #f4b824;
+    --gray: #666;
+    --dark-gray: #444242;
+    --light-gray: #848484;
+}
+
+@font-face {
+    font-family: ElliotPro;
+    src: url(./assets/fonts/FSElliotPro.otf);
+    src: url(./assets/fonts/FSElliotPro.woff);
+}
+@font-face {
+    font-family: ElliotPro-Light;
+    src: url(./assets/fonts/FSElliotPro-Light.otf);
+    src: url(./assets/fonts/FSElliotPro-Light.woff);
+}
+@font-face {
+    font-family: ElliotPro-Bold;
+    src: url(./assets/fonts/FSElliotPro-Bold.otf);
+    src: url(./assets/fonts/FSElliotPro-Bold.woff);
+}
+@font-face {
+    font-family: ElliotPro-BoldItalic;
+    src: url(./assets/fonts/FSElliotPro-BoldItalic.otf);
+}
+@font-face {
+    font-family: ElliotPro-Heavy;
+    src: url(./assets/fonts/FSElliotPro-Heavy.otf);
+}
+@font-face {
+    font-family: ElliotPro-HeavyItalic;
+    src: url(./assets/fonts/FSElliotPro-HeavyItalic.otf);
+}
+@font-face {
+    font-family: ElliotPro-LightItalic;
+    src: url(./assets/fonts/FSElliotPro-LightItalic.otf);
+}
+@font-face {
+    font-family: ElliotPro-Thin;
+    src: url(./assets/fonts/FSElliotPro-Thin.otf);
+    src: url(./assets/fonts/FSElliotPro-Thin.woff);
+}
+@font-face {
+    font-family: ElliotPro-ThinItalic;
+    src: url(./assets/fonts/FSElliotPro-ThinItalic.otf);
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: calc(100vh - 50px);
+    font-weight: 400;
+    color: var(--dark-gray);
+    background: var(--gray-background);
+}
+
+#root {
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    line-height: 1.42857143;
+}
+
+*,
+body {
+    font-family: ElliotPro, 'Source Sans Pro', 'Helvetica';
+    font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: ElliotPro-Bold;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
