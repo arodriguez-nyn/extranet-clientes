@@ -53,11 +53,11 @@ const Cabecera = () => {
     /* ------------------------------------------------------------------- */
     return (
         <CabeceraEstilos>
-            <img
+            <img data-testid='logo'
                 src={require('../../assets/img/logo-horiz-nn-rgb-amarillo.svg')}
                 alt='Logo'
             />
-            <select>
+            <select data-testid='idioma'>
                 <option>CA</option>
                 <option>ES</option>
                 <option>EN</option>

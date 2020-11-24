@@ -56,11 +56,12 @@ html,
 body {
     padding: 0;
     margin: 0;
-    width: 100%;
+    min-height: 100vh;
     height: calc(100vh - 50px);
     font-weight: 400;
     color: var(--dark-gray);
-    background: var(--gray-background);
+    /* background: var(--gray-background); */
+    background: #fff;
 }
 
 #root {

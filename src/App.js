@@ -17,7 +17,7 @@ import Documentacion from 'pages/documentacion'
 function App() {
     return (
         <AppContextProvider>
-            <Router>
+            <Router basename={'nynExtranet'} >
                 <Switch>
                     <Route exact path='/' component={Entidad} />
                     <Route

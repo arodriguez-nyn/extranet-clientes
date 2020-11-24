@@ -96,6 +96,7 @@ const OtrosDatosContacto = () => {
                         <Select
                             id='tipoContacto1'
                             name='tipoContacto1'
+                            width='300px'
                             value={formik.values.tipoContacto1}
                             onChange={formik.handleChange}
                         >
@@ -120,6 +121,7 @@ const OtrosDatosContacto = () => {
                             type='text'
                             id='telefono1'
                             name='telefono1'
+                            width='300px'
                             value={formik.values.telefono1}
                             onChange={formik.handleChange}
                         />
@@ -140,6 +142,7 @@ const OtrosDatosContacto = () => {
                         <Select
                             id='tipoContacto2'
                             name='tipoContacto2'
+                            width='300px'
                             value={formik.values.tipoContacto2}
                             onChange={formik.handleChange}
                         >
@@ -164,6 +167,7 @@ const OtrosDatosContacto = () => {
                             type='text'
                             id='telefono2'
                             name='telefono2'
+                            width='300px'
                             value={formik.values.telefono2}
                             onChange={formik.handleChange}
                         />
@@ -184,6 +188,7 @@ const OtrosDatosContacto = () => {
                         <Select
                             id='tipoContacto3'
                             name='tipoContacto3'
+                            width='300px'
                             value={formik.values.tipoContacto3}
                             onChange={formik.handleChange}
                         >
@@ -197,7 +202,7 @@ const OtrosDatosContacto = () => {
                         <Campo
                             type='text'
                             id='contacto3'
-                            name='contacto3'
+                            name='contacto3'                            
                             value={formik.values.contacto3}
                             onChange={formik.handleChange}
                         />
@@ -208,6 +213,7 @@ const OtrosDatosContacto = () => {
                             type='text'
                             id='telefono3'
                             name='telefono3'
+                            width='300px'
                             value={formik.values.telefono3}
                             onChange={formik.handleChange}
                         />

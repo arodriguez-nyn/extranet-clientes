@@ -34,7 +34,7 @@ const LineaDireccion = styled.span`
 `
 
 const MismaDireccion = styled.span`
-    border-bottom: 1px solid #c2c2c2;
+    border-bottom: 1px dashed #c2c2c2;
     display: flex;
     flex-direction: row;
     margin-bottom: 1rem;
@@ -167,7 +167,7 @@ const DireccionArrendatario = () => {
                     <Titulo>Dirección del Arrendatario</Titulo>
                     <MismaDireccion>
                         <label htmlFor='direccionArrendatarioContrato'>
-                            Misma que Contrato
+                            Misma que el Contrato
                         </label>
                         <input
                             type='checkbox'
@@ -186,6 +186,7 @@ const DireccionArrendatario = () => {
                             id='tipoVia'
                             name='tipoViaArrendatario'
                             value={formik.values.tipoViaArrendatario}
+                            width='150px'
                             onChange={formik.handleChange}
                             disabled={mismaDireccion}
                         >

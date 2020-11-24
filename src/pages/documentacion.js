@@ -20,7 +20,6 @@ import { Titulo } from 'componentes/ui/Titulo'
 import { Boton } from 'componentes/ui/Boton'
 
 const InputFile = styled.div`
-    margin-top: 0.5rem;
     background-color: #fff;
     color: var(--primary-yellow);
     border: 1px solid var(--primary-yellow);
@@ -30,11 +29,13 @@ const InputFile = styled.div`
     text-transform: uppercase;
     font-size: 0.9rem;
     text-align: center;
+    width: 150px;
+    margin:0 auto;
     margin-bottom: 1rem;
+    margin-top: 0.5rem;
 
     label {
-        display: block;
-        width: 100%;
+        display: block;        
     }
 
     label:hover {
@@ -44,11 +45,18 @@ const InputFile = styled.div`
     input {
         display: none;
     }
+
+    @media (max-width: 412px) {        
+        width: 100%;
+    }
 `
 
 const Etiqueta = styled.label`
     display: block;
+    width: 100%;
+    text-align: center;
     margin-top: 1rem;
+
 `
 
 const ListaFicheros = styled.div`
@@ -128,7 +136,9 @@ const Documentacion = () => {
 
         await login()  // Primero nos autenticamos
         await guardaArchivos(formData, entidad, documento)
-        await altaRegistroFormulario()
+        await altaRegistroFormulario()    
+        
+        history.push('/')
     }
 
     const altaRegistroFormulario = async () => {
@@ -231,10 +241,9 @@ const Documentacion = () => {
                     <Etiqueta>Documentación (DNI/NIE)</Etiqueta>
                     <InputFile>
                         <label htmlFor='dni'>Añadir...</label>
-                        <input
+                        <input 
                             id='dni'
                             type='file'
-                            width='100%'
                             value={ficheroDNI}
                             onClick={resetDNI}
                             onChange={handleChangeDNI}
@@ -259,7 +268,6 @@ const Documentacion = () => {
                         <input
                             id='nominas'
                             type='file'
-                            width='100%'
                             value={ficheroNominas}
                             onClick={resetNominas}
                             onChange={handleChangeNominas}
@@ -312,7 +320,7 @@ const Documentacion = () => {
                         <Boton
                             type='submit'
                             marginLeft='0.25rem'
-                            marginTop='1rem'
+                            marginTop='1rem'                            
                         >
                             Finalizar
                         </Boton>

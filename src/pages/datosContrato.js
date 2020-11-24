@@ -93,6 +93,7 @@ const DatosContrato = () => {
                             id='tratamiento'
                             name='tratamiento'
                             value={formik.values.tratamiento}
+                            width='100px'
                             onChange={formik.handleChange}
                         >
                             <option>Sr.</option>
@@ -146,6 +147,7 @@ const DatosContrato = () => {
                             id='tipo-doc'
                             name='tipoDocumento'
                             value={formik.values.tipoDocumento}
+                            width='150px'
                             onChange={formik.handleChange}
                         >
                             <option>DNI</option>
@@ -164,6 +166,7 @@ const DatosContrato = () => {
                             type='text'
                             id='documento'
                             name='documento'
+                            width='200px'
                             value={formik.values.documento}
                             onChange={formik.handleChange}
                         />

@@ -17,7 +17,6 @@ import {
     CampoObligatorio,
     LineaFormulario,
 } from 'componentes/ui/Formulario'
-import Cabecera from 'componentes/Cabecera'
 import Alerta from 'componentes/Alerta'
 
 const Entidad = () => {
@@ -59,7 +58,6 @@ const Entidad = () => {
     /* ------------------------------------------------------------------- */
     return (
         <>
-            <Cabecera />
             <Layout>
                 <Formulario onSubmit={formik.handleSubmit}>
                     <LineaFormulario>
@@ -107,7 +105,7 @@ const Entidad = () => {
                             <option>Persona Jurídica</option>
                         </Select>
                     </LineaFormulario>
-                    <footer>
+                    <footer className='footer-one-button'>
                         <Boton
                             type='submit'
                             marginLeft='0.25rem'
