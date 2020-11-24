@@ -27,14 +27,14 @@ const DatosContrato = () => {
     /* ------------------------------------------------------------------- */
     const history = useHistory()
     const appContext = useContext(AppContext)
-    const { valoresFormulario, setValoresFormulario } = appContext
+    const { oficinasPF, setOficinasPF } = appContext
     const {
         tratamiento,
         nombre,
         apellidos,
         tipoDocumento,
         documento,
-    } = valoresFormulario
+    } = oficinasPF
 
     const formik = useFormik({
         initialValues: {
@@ -57,15 +57,15 @@ const DatosContrato = () => {
                 tipoDocumento,
                 documento,
             } = valores
-            setValoresFormulario({
-                ...valoresFormulario,
+            setOficinasPF({
+                ...oficinasPF,
                 tratamiento,
                 nombre,
                 apellidos,
                 tipoDocumento,
                 documento,
             })
-            history.push('/direccion-arrendatario')
+            history.push('/oficinas-pf/direccion-arrendatario')
         },
     })
 

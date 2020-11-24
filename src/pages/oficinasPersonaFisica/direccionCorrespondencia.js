@@ -47,7 +47,7 @@ const DireccionCorrespondencia = () => {
     /* ------------------------------------------------------------------- */
     const history = useHistory()
     const appContext = useContext(AppContext)
-    const { valoresFormulario, setValoresFormulario } = appContext
+    const { oficinasPF, setOficinasPF } = appContext
     const {
         tipoViaCorrespondencia,
         direccionCorrespondencia,
@@ -63,7 +63,7 @@ const DireccionCorrespondencia = () => {
         telefonoCorrespondencia,
         emailCorrespondencia,
         direccionCorrespondenciaContrato,
-    } = valoresFormulario
+    } = oficinasPF
     const [mismaDireccion, setMismaDireccion] = useState(direccionCorrespondenciaContrato)
 
     const formik = useFormik({
@@ -125,8 +125,8 @@ const DireccionCorrespondencia = () => {
                 telefonoCorrespondencia,
                 emailCorrespondencia,
             } = valores
-            setValoresFormulario({
-                ...valoresFormulario,
+            setOficinasPF({
+                ...oficinasPF,
                 tipoViaCorrespondencia: !direccionCorrespondenciaContrato ? tipoViaCorrespondencia : '',
                 direccionCorrespondencia: !direccionCorrespondenciaContrato ? direccionCorrespondencia : '',
                 numeroCorrespondencia: !direccionCorrespondenciaContrato ? numeroCorrespondencia : '',
@@ -142,7 +142,7 @@ const DireccionCorrespondencia = () => {
                 emailCorrespondencia: !direccionCorrespondenciaContrato ? emailCorrespondencia : '',
                 direccionCorrespondenciaContrato: mismaDireccion,                
             })
-            history.push('/otros-contacto')
+            history.push('/oficinas-pf/otros-contacto')
         },
     })
 
@@ -150,7 +150,7 @@ const DireccionCorrespondencia = () => {
     /* ----------------------------- FUNCIONES --------------------------- */
     /* ------------------------------------------------------------------- */
     const handleRetroceder = () => {
-        history.push('/direccion-arrendatario')
+        history.push('/oficinas-pf/direccion-arrendatario')
     }
 
     const handleMismaDireccion = e =>  {

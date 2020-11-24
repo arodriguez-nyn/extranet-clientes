@@ -22,7 +22,7 @@ const OtrosDatosContacto = () => {
     /* ------------------------------------------------------------------- */
     const history = useHistory()
     const appContext = useContext(AppContext)
-    const { valoresFormulario, setValoresFormulario } = appContext
+    const { oficinasPF, setOficinasPF } = appContext
     const {
         contacto1,
         nombre1,
@@ -36,7 +36,7 @@ const OtrosDatosContacto = () => {
         nombre3,
         telefono3,
         email3,
-    } = valoresFormulario
+    } = oficinasPF
 
     const formik = useFormik({
         initialValues: {
@@ -55,8 +55,8 @@ const OtrosDatosContacto = () => {
         },
         onSubmit: valores => {
             const { contacto1, nombre1, telefono1, email1 } = valores
-            setValoresFormulario({
-                ...valoresFormulario,
+            setOficinasPF({
+                ...oficinasPF,
                 contacto1,
                 nombre1,
                 telefono1,
@@ -70,7 +70,7 @@ const OtrosDatosContacto = () => {
                 telefono3,
                 email3,
             })
-            history.push('/documentacion')
+            history.push('/oficinas-pf/documentacion')
         },
     })
 
@@ -78,7 +78,7 @@ const OtrosDatosContacto = () => {
     /* ----------------------------- FUNCIONES --------------------------- */
     /* ------------------------------------------------------------------- */
     const handleRetroceder = () => {
-        history.push('/direccion-correspondencia')
+        history.push('/oficinas-pf/direccion-correspondencia')
     }
 
     /* ------------------------------------------------------------------- */

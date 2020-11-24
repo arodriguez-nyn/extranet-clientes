@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react'
 const AppContext = createContext(null)
 
 export const AppContextProvider = ({ children }) => {
-    const [valoresFormulario, setValoresFormulario] = useState({
+    const [oficinasPF, setOficinasPF] = useState({
         entidad: 0,
         tipoEntidad: 'Despachos',
         tipoFiscal: 'Persona Física',
@@ -60,8 +60,8 @@ export const AppContextProvider = ({ children }) => {
     return (
         <AppContext.Provider
             value={{
-                valoresFormulario,
-                setValoresFormulario,
+                oficinasPF,
+                setOficinasPF,
             }}
         >
             {children}

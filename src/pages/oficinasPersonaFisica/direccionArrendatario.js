@@ -47,7 +47,7 @@ const DireccionArrendatario = () => {
     /* ------------------------------------------------------------------- */
     const history = useHistory()
     const appContext = useContext(AppContext)
-    const { valoresFormulario, setValoresFormulario } = appContext
+    const { oficinasPF, setOficinasPF } = appContext
     const {
         tipoViaArrendatario,
         direccionArrendatario,
@@ -63,7 +63,7 @@ const DireccionArrendatario = () => {
         telefonoArrendatario,
         emailArrendatario,
         direccionArrendatarioContrato
-    } = valoresFormulario
+    } = oficinasPF
     const [mismaDireccion, setMismaDireccion] = useState(direccionArrendatarioContrato)
 
     const formik = useFormik({
@@ -124,8 +124,8 @@ const DireccionArrendatario = () => {
                 emailArrendatario,
                 direccionArrendatarioContrato,
             } = valores
-            setValoresFormulario({
-                ...valoresFormulario,
+            setOficinasPF({
+                ...oficinasPF,
                 tipoViaArrendatario: !direccionArrendatarioContrato ? tipoViaArrendatario : '',
                 direccionArrendatario: !direccionArrendatarioContrato ? direccionArrendatario : '',
                 numeroArrendatario: !direccionArrendatarioContrato ? numeroArrendatario : '',
@@ -141,7 +141,7 @@ const DireccionArrendatario = () => {
                 emailArrendatario: !direccionArrendatarioContrato ? emailArrendatario : '',
                 direccionArrendatarioContrato: mismaDireccion,                
             })
-            history.push('/direccion-correspondencia')
+            history.push('/oficinas-pf/direccion-correspondencia')
         },
     })
 
@@ -149,7 +149,7 @@ const DireccionArrendatario = () => {
     /* ----------------------------- FUNCIONES --------------------------- */
     /* ------------------------------------------------------------------- */
     const handleRetroceder = () => {
-        history.push('/datos-contrato')
+        history.push('/oficinas-pf/datos-contrato')
     }
 
     const handleMismaDireccion = e => {

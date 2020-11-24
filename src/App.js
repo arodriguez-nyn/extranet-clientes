@@ -8,11 +8,11 @@ import Entidad from 'pages/entidad'
 
 // Context
 import { AppContextProvider } from 'context/AppContext'
-import DatosContrato from 'pages/datosContrato'
-import DireccionArrendatario from 'pages/direccionArrendatario'
-import DireccionCorrespondencia from 'pages/direccionCorrespondencia'
-import OtrosDatosContacto from 'pages/otrosDatosContacto'
-import Documentacion from 'pages/documentacion'
+import DatosContrato from 'pages/oficinasPersonaFisica/datosContrato'
+import DireccionArrendatario from 'pages/oficinasPersonaFisica/direccionArrendatario'
+import DireccionCorrespondencia from 'pages/oficinasPersonaFisica/direccionCorrespondencia'
+import OtrosDatosContacto from 'pages/oficinasPersonaFisica/otrosDatosContacto'
+import Documentacion from 'pages/oficinasPersonaFisica/documentacion'
 
 function App() {
     return (
@@ -22,27 +22,27 @@ function App() {
                     <Route exact path='/' component={Entidad} />
                     <Route
                         exact
-                        path='/datos-contrato'
+                        path='/oficinas-pf/datos-contrato'
                         component={DatosContrato}
                     />
                     <Route
                         exact
-                        path='/direccion-arrendatario'
+                        path='/oficinas-pf/direccion-arrendatario'
                         component={DireccionArrendatario}
                     />
                     <Route
                         exact
-                        path='/direccion-correspondencia'
+                        path='/oficinas-pf/direccion-correspondencia'
                         component={DireccionCorrespondencia}
                     />
                     <Route
                         exact
-                        path='/otros-contacto'
+                        path='/oficinas-pf/otros-contacto'
                         component={OtrosDatosContacto}
                     />
                     <Route
                         exact
-                        path='/documentacion'
+                        path='/oficinas-pf/documentacion'
                         component={Documentacion}
                     />
                 </Switch>

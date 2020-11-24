@@ -71,8 +71,8 @@ const Documentacion = () => {
     /* ------------------------------------------------------------------- */
     const history = useHistory()
     const appContext = useContext(AppContext)
-    const { valoresFormulario, setValoresFormulario } = appContext
-    const { dni, nominas, certificadoBancario } = valoresFormulario
+    const { oficinasPF, setOficinasPF } = appContext
+    const { dni, nominas, certificadoBancario } = oficinasPF
     const [ficheroDNI, setFicheroDNI] = useState('')
     const [ficheroNominas, setFicheroNominas] = useState('')
     const [ficheroCertificado, setFicheroCertificado] = useState('')
@@ -81,12 +81,12 @@ const Documentacion = () => {
     /* ----------------------------- FUNCIONES --------------------------- */
     /* ------------------------------------------------------------------- */
     const handleRetroceder = () => {
-        history.push('/otros-contacto')
+        history.push('/oficinas-pf/otros-contacto')
     }
 
     const handleChangeDNI = e => {
-        setValoresFormulario({
-            ...valoresFormulario,
+        setOficinasPF({
+            ...oficinasPF,
             dni: [...dni, e.target.files[0]],
         })
     }
@@ -96,8 +96,8 @@ const Documentacion = () => {
     }
 
     const handleChangeNominas = e => {
-        setValoresFormulario({
-            ...valoresFormulario,
+        setOficinasPF({
+            ...oficinasPF,
             nominas: [...nominas, e.target.files[0]],
         })
     }
@@ -107,8 +107,8 @@ const Documentacion = () => {
     }
 
     const handleChangeCertificado = e => {
-        setValoresFormulario({
-            ...valoresFormulario,
+        setOficinasPF({
+            ...oficinasPF,
             certificadoBancario: [...certificadoBancario, e.target.files[0]],
         })
     }
@@ -132,7 +132,7 @@ const Documentacion = () => {
             formData.append('archivos', documento)
         })
 
-        const {entidad, documento} = valoresFormulario
+        const {entidad, documento} = oficinasPF
 
         await login()  // Primero nos autenticamos
         await guardaArchivos(formData, entidad, documento)
@@ -174,7 +174,7 @@ const Documentacion = () => {
                 provinciaCorrespondencia,
                 paisCorrespondencia,
                 telefonoCorrespondencia,
-                emailCorrespondencia } = valoresFormulario
+                emailCorrespondencia } = oficinasPF
 
         const codigoTipoFiscal = tipoFiscal && 
             (tipoFiscal === 'Persona Física' ? 'F' : 'J')                

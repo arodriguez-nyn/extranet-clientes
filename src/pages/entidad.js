@@ -25,8 +25,8 @@ const Entidad = () => {
     /* ------------------------------------------------------------------- */
     const history = useHistory()
     const appContext = useContext(AppContext)
-    const { valoresFormulario, setValoresFormulario } = appContext
-    const { entidad, tipoEntidad, tipoFiscal } = valoresFormulario
+    const { oficinasPF, setOficinasPF } = appContext
+    const { entidad, tipoEntidad, tipoFiscal } = oficinasPF
 
     const formik = useFormik({
         initialValues: {
@@ -40,12 +40,12 @@ const Entidad = () => {
         }),
         onSubmit: valores => {
             const { entidad, tipoFiscal } = valores
-            setValoresFormulario({
-                ...valoresFormulario,
+            setOficinasPF({
+                ...oficinasPF,
                 entidad,
                 tipoFiscal,
             })
-            history.push('/datos-contrato')
+            history.push('/oficinas-pf/datos-contrato')
         },
     })
 
@@ -81,19 +81,27 @@ const Entidad = () => {
                     ) : null}
                     <LineaFormulario>
                         <label htmlFor='tipo-entidad'>
-                            Tipo <CampoObligatorio>*</CampoObligatorio>
+                            Tipo
                         </label>
-                        <Campo 
+                        <Select
+                            id='tipo-fiscal'
+                            name='tipoFiscal'
+                            value={formik.values.tipoFiscal}
+                            onChange={formik.handleChange}
+                        >
+                            <option>Oficinas</option>
+                            <option>Viviendas</option>
+                        </Select>
+                        {/* <Campo 
                             type='text' 
                             id='tipo-entidad' 
                             name='tipoEntidad' 
                             value={tipoEntidad} 
-                            disabled />
+                            disabled /> */}
                     </LineaFormulario>
                     <LineaFormulario>
                         <label htmlFor='tipo-fiscal'>
-                            Física/Jurídica{' '}
-                            <CampoObligatorio>*</CampoObligatorio>
+                            Física/Jurídica
                         </label>
                         <Select
                             id='tipo-fiscal'

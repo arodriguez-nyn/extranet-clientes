@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
 // Context
 import AppContext from 'context/AppContext'
@@ -30,8 +30,8 @@ const DocumentoAdjunto = ({ fichero, seccion }) => {
     /* -------------------- CONSTANTES Y DECLARACIONES ------------------- */
     /* ------------------------------------------------------------------- */
     const appContext = useContext(AppContext)
-    const { valoresFormulario, setValoresFormulario } = appContext
-    const { dni, nominas, certificadoBancario } = valoresFormulario
+    const { oficinasPF, setOficinasPF } = appContext
+    const { dni, nominas, certificadoBancario } = oficinasPF
     
     /* ------------------------------------------------------------------- */
     /* ----------------------------- FUNCIONES --------------------------- */
@@ -42,20 +42,20 @@ const DocumentoAdjunto = ({ fichero, seccion }) => {
 
         switch (seccion) {
             case 'dni':
-                setValoresFormulario({
-                    ...valoresFormulario,
+                setOficinasPF({
+                    ...oficinasPF,
                     dni: dni.filter(ficheroDNI => ficheroDNI.name !== fichero),
                 })
                 break
             case 'nominas':
-                setValoresFormulario({
-                    ...valoresFormulario,
+                setOficinasPF({
+                    ...oficinasPF,
                     nominas: nominas.filter(ficheroNominas => ficheroNominas.name !== fichero),
                 })
                 break
             case 'certificadoBancario':
-                setValoresFormulario({
-                    ...valoresFormulario,
+                setOficinasPF({
+                    ...oficinasPF,
                     certificadoBancario: certificadoBancario.filter(ficheroCertificado => ficheroCertificado.name !== fichero),
                 })
                 break
