@@ -14,6 +14,7 @@ const usuario = {
 export const creaRegistro = async registro => {
     try {
         if(process.env.NODE_ENV === 'development'){
+            console.log(process.env.REACT_APP_URL_REST)
             await axios.put(process.env.REACT_APP_URL_REST, registro)
         }else{
             await axios.put(process.env.REACT_APP_URL_REST_PROD, registro)
@@ -26,7 +27,6 @@ export const creaRegistro = async registro => {
 }
 
 export const guardaArchivos = async (formData, entidad, documento) => {
-
     let url
     try {
         if(process.env.NODE_ENV === 'development'){
@@ -54,20 +54,22 @@ export const guardaArchivos = async (formData, entidad, documento) => {
     }
 }
 
-export const login = async () => {
+export const altaRegistro = async (formData, entidad, documento, createExtcli) => {
     try {
         const { nombre, password } = usuario
         let url
+
         if(process.env.NODE_ENV === 'development'){
             url = `${process.env.REACT_APP_URL_LOGIN}j_username=${nombre}&j_password=${password}`
         }else{
             url = `${process.env.REACT_APP_URL_LOGIN_PROD}j_username=${nombre}&j_password=${password}`
         }
 
-        console.log(url)
         await axios.post(url, usuario)
-        console.log('Autenticado')
+        await creaRegistro(createExtcli)
+        await guardaArchivos(formData, entidad, documento)
+        
     } catch (error) {
-        console.log(error)
+        console.log(error.response)
     }
 }

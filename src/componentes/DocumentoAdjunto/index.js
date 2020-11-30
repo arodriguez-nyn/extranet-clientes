@@ -37,9 +37,6 @@ const DocumentoAdjunto = ({ fichero, seccion }) => {
     /* ----------------------------- FUNCIONES --------------------------- */
     /* ------------------------------------------------------------------- */
     const handleDelete = () => {
-
-        console.log(fichero, seccion)
-
         switch (seccion) {
             case 'dni':
                 setOficinasPF({
@@ -58,6 +55,8 @@ const DocumentoAdjunto = ({ fichero, seccion }) => {
                     ...oficinasPF,
                     certificadoBancario: certificadoBancario.filter(ficheroCertificado => ficheroCertificado.name !== fichero),
                 })
+                break
+            default:
                 break
         }
     }

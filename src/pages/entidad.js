@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 // Dependencias
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
+//import { useFormik } from 'formik'
+//import * as Yup from 'yup'
 import { useHistory } from 'react-router-dom'
 
 // Context
@@ -14,44 +14,87 @@ import { Campo, Select } from 'componentes/ui/Campos'
 import { Boton } from 'componentes/ui/Boton'
 import {
     Formulario,
-    CampoObligatorio,
+    //CampoObligatorio,
     LineaFormulario,
 } from 'componentes/ui/Formulario'
-import Alerta from 'componentes/Alerta'
+//import Alerta from 'componentes/Alerta'
 
-const Entidad = () => {
+const Entidad = ({location}) => {
     /* ------------------------------------------------------------------- */
     /* -------------------- CONSTANTES Y DECLARACIONES ------------------- */
     /* ------------------------------------------------------------------- */
+    const [datosFormulario, setDatosFormulario] = useState({
+        entidad: 0,
+        tipoEntidad: '',
+        tipoFiscal: 'Persona Física'
+    })
+    const {entidad, tipoEntidad, tipoFiscal} = datosFormulario
     const history = useHistory()
     const appContext = useContext(AppContext)
     const { oficinasPF, setOficinasPF } = appContext
-    const { entidad, tipoEntidad, tipoFiscal } = oficinasPF
+    
+    // const formik = useFormik({
+    //     initialValues: {
+    //         entidad
+    //     },
+    //     validationSchema: Yup.object({
+    //         entidad: Yup.number()
+    //             .required('El código de entidad es obligatorio')
+    //             .moreThan(0, 'Introduzca un código de entidad'),
+    //     }),
+    //     onSubmit: valores => {
+    //         const { entidad } = valores
+    //         setOficinasPF({
+    //             ...oficinasPF,
+    //             entidad,
+    //         })
+    //         history.push('/oficinas-pf/datos-contrato')
+    //     },
+    // })
 
-    const formik = useFormik({
-        initialValues: {
-            entidad,
-            tipoFiscal,
-        },
-        validationSchema: Yup.object({
-            entidad: Yup.number()
-                .required('El código de entidad es obligatorio')
-                .moreThan(0, 'Introduzca un código de entidad'),
-        }),
-        onSubmit: valores => {
-            const { entidad, tipoFiscal } = valores
-            setOficinasPF({
-                ...oficinasPF,
-                entidad,
-                tipoFiscal,
+    /* ------------------------------------------------------------------- */
+    /* ---------------------------- USE EFFECTS -------------------------- */
+    /* ------------------------------------------------------------------- */
+    useEffect(() => {
+        const obtieneParametros = () => {
+            const queryParams = location.search 
+            const parametros = queryParams.split('&')
+            
+            const elementoEntidad = parametros[0]
+            const parametroEentidad = elementoEntidad.split('=')[1]
+            
+            const elementoTipo = parametros[1]
+            const parametroTipoEntidad = elementoTipo.split('=')[1]
+    
+            setDatosFormulario({
+                ...datosFormulario,
+                entidad: parametroEentidad,
+                tipoEntidad: parametroTipoEntidad
             })
-            history.push('/oficinas-pf/datos-contrato')
-        },
-    })
+        }
+
+        location && location.search !== "" && obtieneParametros()
+    }, [location, datosFormulario])
 
     /* ------------------------------------------------------------------- */
     /* ----------------------------- FUNCIONES --------------------------- */
     /* ------------------------------------------------------------------- */
+    const handleChange = e => {
+        setDatosFormulario({
+            ...datosFormulario,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = () => {
+        setOficinasPF({
+            ...oficinasPF,
+            entidad,
+            tipoEntidad,
+            tipoFiscal
+        })
+        history.push('/oficinas-pf/datos-contrato')
+    }
 
     /* ------------------------------------------------------------------- */
     /* --------------------------- RENDERIZADO --------------------------- */
@@ -59,45 +102,30 @@ const Entidad = () => {
     return (
         <>
             <Layout>
-                <Formulario onSubmit={formik.handleSubmit}>
+                <Formulario onSubmit={handleSubmit}>
                     <LineaFormulario>
                         <label htmlFor='entidad'>
-                            Entidad <CampoObligatorio>*</CampoObligatorio>
+                            Entidad
                         </label>
                         <Campo
                             type='number'
                             id='entidad'
                             name='entidad'
-                            value={formik.values.entidad}
-                            onChange={formik.handleChange}
+                            value={entidad}
+                            disabled
                         />
                     </LineaFormulario>
-                    {formik.touched.entidad && formik.errors.entidad ? (
-                        <Alerta
-                            mensaje={formik.errors.entidad}
-                            width='100%'
-                            error={true}
-                        />
-                    ) : null}
                     <LineaFormulario>
                         <label htmlFor='tipo-entidad'>
                             Tipo
                         </label>
-                        <Select
-                            id='tipo-fiscal'
-                            name='tipoFiscal'
-                            value={formik.values.tipoFiscal}
-                            onChange={formik.handleChange}
-                        >
-                            <option>Oficinas</option>
-                            <option>Viviendas</option>
-                        </Select>
-                        {/* <Campo 
-                            type='text' 
-                            id='tipo-entidad' 
-                            name='tipoEntidad' 
-                            value={tipoEntidad} 
-                            disabled /> */}
+                        <Campo
+                            type='text'
+                            id='tipoEntidad'
+                            name='tipoEntidad'
+                            value={tipoEntidad}
+                            disabled
+                        />
                     </LineaFormulario>
                     <LineaFormulario>
                         <label htmlFor='tipo-fiscal'>
@@ -106,8 +134,8 @@ const Entidad = () => {
                         <Select
                             id='tipo-fiscal'
                             name='tipoFiscal'
-                            value={formik.values.tipoFiscal}
-                            onChange={formik.handleChange}
+                            value={tipoFiscal}
+                            onChange={handleChange}
                         >
                             <option>Persona Física</option>
                             <option>Persona Jurídica</option>

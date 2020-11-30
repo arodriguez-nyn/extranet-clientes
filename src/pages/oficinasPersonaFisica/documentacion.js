@@ -9,7 +9,7 @@ import shortid from 'shortid'
 import AppContext from 'context/AppContext'
 
 // Servicios
-import {guardaArchivos, creaRegistro, login} from 'servicios/extranet'
+import {altaRegistro} from 'servicios/extranet'
 
 // Componentes
 import Cabecera from 'componentes/Cabecera'
@@ -132,16 +132,14 @@ const Documentacion = () => {
             formData.append('archivos', documento)
         })
 
-        const {entidad, documento} = oficinasPF
+        //const {entidad, documento} = oficinasPF
+        altaRegistroFormulario(formData)
 
-        await login()  // Primero nos autenticamos
-        await guardaArchivos(formData, entidad, documento)
-        await altaRegistroFormulario()    
-        
-        history.push('/')
+        //await guardaArchivos(formData, entidad, documento)
+        //await altaRegistroFormulario()    
     }
 
-    const altaRegistroFormulario = async () => {
+    const altaRegistroFormulario = async formData => {
         const { entidad, 
                 tipoFiscal, 
                 tratamiento,
@@ -226,7 +224,7 @@ const Documentacion = () => {
         const createExtcli = {
             'dsEXTCLI': dsExtcli
         }
-        await creaRegistro(createExtcli)
+        await altaRegistro(formData, entidad, documento, createExtcli)
     }
 
     /* ------------------------------------------------------------------- */
